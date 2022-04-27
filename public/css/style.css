@@ -1,0 +1,74 @@
+/* Add image background to container */
+
+.container {
+    background-image: url("../images/bg.jpg");
+}
+
+
+/* Design logo */
+
+.logo {
+    width: 10%;
+    margin-top: 2%;
+    background: linear-gradient(to top, #db8fd5, #ffffff, #fa94f1);
+    color: blue;
+    box-shadow: 10px 5px 15px #db8fd5;
+    border-radius: 10px;
+    padding: 0.5%;
+    font-family: futara;
+}
+
+
+/* set width and mt of all btns */
+
+.w-btn {
+    width: 30%;
+    margin-top: 20%;
+    font-weight: bold;
+}
+
+
+/* set mt of 2 btns in home page*/
+
+.btnGroup {
+    margin-top: 20%;
+}
+
+
+/* set animation to 2 btns in home page */
+
+.s-btn {
+    width: 30%;
+    margin-top: 2%;
+    font-weight: bold;
+    animation-name: example;
+    animation-duration: 3s;
+}
+
+@keyframes example {
+    from {
+        background-color: blue;
+    }
+    to {
+        background-color: orange;
+    }
+}
+
+h1 {
+    color: rgb(0, 159, 212);
+}
+
+h3 {
+    padding: 4%;
+}
+
+
+/* Answer place */
+
+.answer {
+    background: #C33FE4;
+    margin-top: 3%;
+    padding: 2%;
+    width: 50%;
+    border: 1px solid white
+}
