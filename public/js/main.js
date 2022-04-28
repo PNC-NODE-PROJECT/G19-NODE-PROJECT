@@ -7,8 +7,19 @@ let second_scenario = document.querySelector('.second_scenario');
 let third_scenario = document.querySelector('.third_scenario');
 // @ Play Quiz Page
 let fourth_scenario = document.querySelector('.fourth_scenario');
+// @containerOfThe answer
 let answerBlock = document.querySelector('.answerBlock');
+// @questions Line
 let question = document.querySelector('.question');
+let getQuestion = document.querySelector('#question');
+let getAnswer1 = document.querySelector('#answer1');
+let getAnswer2 = document.querySelector('#answer2');
+let getAnswer3 = document.querySelector('#answer3');
+let getAnswer4 = document.querySelector('#answer4');
+let selectAnswer1 = document.querySelector('.selection1');
+let selectAnswer2 = document.querySelector('.selection2');
+let selectAnswer3 = document.querySelector('.selection3');
+let selectAnswer4 = document.querySelector('.selection4');
 //============================================== Call all btns ============================================
 let goBtn = document.querySelector('.go');
 let playBtn = document.querySelector('.play');
@@ -22,7 +33,10 @@ let faEdit = document.querySelector('.fa-edit');
 second_scenario.style.display = "none"
 third_scenario.style.display = "none"
 fourth_scenario.style.display = "none"
-    // =========================================== All function blocks ========================================
+    // =========================================== Variables ========================================
+let datas = [];
+let questionId = 0;
+// =========================================== All function blocks ========================================
 function hideFirst_scenario() {
     first_scenario.style.display = "none"
     second_scenario.style.display = "block"
@@ -56,6 +70,7 @@ function afterAddQuiz() {
     question.style.background = "white"
     question.style.color = "black"
 };
+// @ Got to play quiz after create
 
 function gotToPlayQuiz() {
     faEdit.style.display = 'none'
@@ -66,6 +81,31 @@ function gotToPlayQuiz() {
     newPlayBtn.style.display = 'none'
     answerBlock.style.display = 'block'
 }
+
+function getAndSaveDataFromUser() {
+
+    let object = {
+        "questionId": questionId,
+        "question": getQuestion.value,
+        arrayOfAnswer: []
+    };
+
+    object.arrayOfAnswer.push({ "option": getAnswer1.value, "isCorrect": selectAnswer1.value });
+    object.arrayOfAnswer.push({ "option": getAnswer2.value, "isCorrect": selectAnswer2.value });
+    object.arrayOfAnswer.push({ "option": getAnswer3.value, "isCorrect": selectAnswer3.value });
+    object.arrayOfAnswer.push({ "option": getAnswer4.value, "isCorrect": selectAnswer4.value });
+    datas.push(object);
+    questionId += 1;
+    console.log(datas)
+}
+
+// function createQuiz() {
+//     let listOfQuestion = document.createElement('div');
+//     listOfQuestion.append(h1);
+//     let h1 = document.createElement('h1');
+
+// }
+// =============================== Event Parts ============================
 goBtn.addEventListener('click', hideFirst_scenario);
 playBtn.addEventListener('click', showPlayQuizPart);
 createBtn.addEventListener('click', showCreateQuizForm);
