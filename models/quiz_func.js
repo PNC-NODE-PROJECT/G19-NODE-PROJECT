@@ -34,19 +34,39 @@ function createNew(question){
     save(questions);
 }
 
-// edit question 
-function edit(id){
-    console.log("good");
+// update question 
+function update(id,editQuestion){
+    let questions = load();
+    let question = questions[id];
+    question.question = editQuestion.question;
+    question.answers = editQuestion.answers;
+
+    // save again
+    save(questions);
 }
 
 // delete question
 function Delete(id){
-    console.log("food");
+    let questions = load();
+    for(let question of questions){
+        if(question.questionID === parseInt(id)){
+            questions.splice(id,1);
+            save(questions);
+        }
+    }
+}
+
+// edit question 
+function edit(id){
+    let questions = load();
+    let question = questions[id];
+    return question;
 }
 
 // export fuctions to main file
 module.exports.getAll = getAll;
 module.exports.createNew = createNew;
 module.exports.Delete = Delete;
+module.exports.update = update;
 module.exports.edit = edit;
 

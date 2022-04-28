@@ -19,19 +19,29 @@ router.get("/",(req,res) =>{
 router.post("/add",(req,res) =>{
     let question = req.body;
     console.log(question);
-    // modeles.createNew(question);
+    modeles.createNew(question);
     res.send("Created successed!");
 })
 
 // Delete question 
 router.delete("/:id",(req,res) =>{
-    let questions = modeles.getAll();
+    let id = req.params.id;
+    modeles.Delete(id);
+    res.send("Deleted Success!");
+})
 
+// edit question 
+router.get("/:id",(req,res) =>{
+    let id = req.params.id;
+    res.send(modeles.edit(id));
 })
 
 // update questions 
-router.patch("/update",(req,res) =>{
-    
+router.patch("/:id",(req,res) =>{
+    let id = req.params.id;
+    let editQuestion = req.body;
+    modeles.update(id,editQuestion);
+    res.send("Updated Success!");
 })
 
 // export router server
