@@ -6,16 +6,12 @@ let first_scenario = document.querySelector('.first_scenario');
 let second_scenario = document.querySelector('.second_scenario');
 // @ Create Quiz Page 
 let third_scenario = document.querySelector('.third_scenario');
-// @ Play Quiz Page
-let fourth_scenario = document.querySelector('.fourth_scenario');
 // @containerOfThe answer
 let answerBlock = document.querySelector('.answerBlock');
 let body = document.querySelector('body');
 
 
 // @questions Line
-let question = document.querySelectorAll('.question');
-
 let getQuestion = document.querySelector('#question');
 let getAnswer1 = document.querySelector('#answer1');
 let getAnswer2 = document.querySelector('#answer2');
@@ -37,11 +33,10 @@ let faEdit = document.querySelectorAll('.fa-edit');
 // ================================= Hide some scenario when it first start ===============================
 second_scenario.style.display = "none"
 third_scenario.style.display = "none"
-fourth_scenario.style.display = "none"
     // =========================================== Variables ========================================
 
 let questionId = 0;
-
+let index = 0;
 const URL = "http://localhost:80/quiz";
 // =========================================== All function blocks ========================================
 function hideFirst_scenario() {
@@ -49,9 +44,37 @@ function hideFirst_scenario() {
     second_scenario.style.display = "block"
 };
 
+function hide(param) {
+    param.style.display = 'none';
+}
+
+function show(param) {
+    param.style.display = 'block';
+}
+let score = 0;
+
+function displayQuizOnebyOne(event) {
+
+    const correct = event.target.dataset.correct
+    let y = correct.toString();
+
+
+    if (y !== 'true') {
+
+        score += 3
+    } else {
+        score += 1
+    }
+
+    console.log(score)
+}
+
+
 function showPlayQuizPart() {
-    first_scenario.style.display = "none"
-    second_scenario.style.display = "none"
+
+    hide(first_scenario)
+    hide(second_scenario)
+
     axios.get(URL).then(afterAddQuiz = (response) => {
 
         let alldata = response.data;
@@ -68,13 +91,13 @@ function showPlayQuizPart() {
             h1.className = 'question';
             h1.textContent = val.question;
             h1.style.color = 'white';
-            let i1 = document.createElement('i');
-            i1.className = "fas fa-trash-alt fa-sm mr-4";
-            i1.style.color = "rgb(254, 32, 32)"
+            let trash = document.createElement('i');
+            trash.className = "fas fa-trash-alt fa-sm mr-4";
+            trash.style.color = "rgb(254, 32, 32)"
             let i2 = document.createElement('i');
             i2.className = "fas fa-edit fa-sm";
             i2.style.color = "rgb(32, 150, 254)"
-            h1.appendChild(i1);
+            h1.appendChild(trash);
             h1.appendChild(i2);
 
             listOfQuestion.appendChild(h1);
@@ -84,47 +107,45 @@ function showPlayQuizPart() {
                 let btn = document.createElement('button');
                 btn.className = 'btn answer text-white';
                 btn.type = 'submit';
-
-                btn.onclick = function() { container.style.display = 'bock' };
+                btn.dataset.correct = oneAnswer.isCorrect;
                 btn.textContent = oneAnswer.option;
+
+                btn.addEventListener('click', () => {
+                    btn.style.backgroundColor = 'gray';
+                    hide(container);
+                    index += 1;
+                    displayQuizOnebyOne(event);
+
+
+                })
                 let br = document.createElement('br');
                 newAnswerBlock.appendChild(btn);
                 newAnswerBlock.appendChild(br);
             }
-            i1.style.display = 'none';
-            i2.style.display = "none";
-            listOfQuestion.appendChild(newAnswerBlock)
+
+            hide(trash);
+            hide(i2);
+            // let con = document.querySelector('.newCon');
+            // console.log(con[0])
+            listOfQuestion.appendChild(newAnswerBlock);
             container.appendChild(listOfQuestion);
-            // container.style.display = 'none';
+            // hide(container);
             body.appendChild(container);
 
-            faEdit[0].style.display = 'none'
-            faTrashAlt[0].style.display = "none"
-            newPlayBtn[0].style.display = 'none'
         }
     }).catch(error => console.log('something error!'));
-    fourth_scenario.style.display = "block"
-    question.style.color = "white"
 
 };
 
 function showCreateQuizForm() {
-    first_scenario.style.display = "none"
-    second_scenario.style.display = "none"
-    third_scenario.style.display = "none"
-    third_scenario.style.display = "block"
+    hide(first_scenario)
+    hide(second_scenario)
+    show(third_scenario)
 };
 
 function displayQuiz() {
+    showCreateQuizForm()
 
-    first_scenario.style.display = "none"
-    second_scenario.style.display = "none"
-    third_scenario.style.display = "block"
-    fourth_scenario.style.display = "block"
-
-    question[0].style.border = "1px solid black"
-    question[0].style.background = "white"
-    question[0].style.color = "black"
 
 
 
@@ -163,4 +184,4 @@ goBtn.addEventListener('click', hideFirst_scenario);
 playBtn.addEventListener('click', showPlayQuizPart);
 createBtn.addEventListener('click', showCreateQuizForm);
 addBtn.addEventListener('click', getAndSaveDataFromUser);
-newPlayBtn.addEventListener('click', gotToPlayQuiz);
+// newPlayBtn.addEventListener('click', gotToPlayQuiz);
