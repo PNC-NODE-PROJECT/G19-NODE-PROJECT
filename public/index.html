@@ -5,85 +5,116 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start</title>
-    <script src="js/main.js" defer></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <title>Quiz-App</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
-    <!-- First Scenario -->
-    <div class="container first_scenario mt-3 border border-3 text-center " style="width: 60%; height: 90vh">
-        <div class=" logo ">
-            <h5>G-19</h5>
+    <!-- manu bare -->
+    <nav>
+        <div class="logo">
+            <span>G</span>-19
         </div>
-        <h1>WELLCOME TO QUIZ APP!</h1>
-        <button type="button " class="btn w-btn go text-white" style="background: #C33FE4; ">GO!</button>
-    </div>
-    <!-- Second Scenario -->
-    <div class="container second_scenario mt-3 border border-3 text-center" style="width: 60%; height: 90vh">
-        <div class=" logo ">
-            <h5>G-19</h5>
+    </nav>
+    <!-- Section 1 -->
+    <section id="section1">
+        <h1>Welcome to Play Quiz-App!</h1>
+        <div class="login">
+            <button id="login">Go!</button>
         </div>
-        <div class="btnGroup">
-            <button type="button " class="btn play s-btn text-white" style="background: #C33FE4; "><h3>PLAY</h3></button>
-            <BR></BR>
-            <button type="button " class="btn create s-btn text-white" style="background: #1b63ff; "><h3>CREATE</h3></button>
-        </div>
-    </div>
-    <!-- 3rd Scenario -->
-    <div class="container third_scenario mt-3 border border-3 text-center" style="width: 60%; height: 90vh">
-        <div class=" logo ">
-            <h5>G-19</h5>
-        </div>
-        <div class="d-flex justify-content-end">
-            <div class="mt-1">
-                <button type="submit" class="btn add btn-primary text-white "><b>+Add</b></button>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="section2" style="display: none;">
+        <button id="back-go">< Back</button>
+        <div class="manu">
+            <div class="btn">
+                <button id="play">Play</button> <br>
+                <button id="create">Create</button>
             </div>
         </div>
-        <form>
-            <input type="text" placeholder="Add question" id="question" class="input-group mt-3 p-3"><br>
+    </section>
+    <!-- Section 3 -->
+    <section id="section3" style="display: none;">
+        <div class="action-btn">
+            <button id="back-manu">< Back</button>
+            <button id="add">Add +</button>
+        </div>
+        <div id="all-question">
 
-            <div class="container text-center " style="width: 80%">
-                <label for="answer1" class="d-flex">
-                    <input type="text" placeholder="Add answer" id="answer1" class="input-group mt-1 p-2"><br>
-                    <select name="selectAnswer1" id=""class=" selection1 mt-1" style="height: 7.5vh;">
-                        <option value=" true">True</option>
-                        <option value=" alse">False</option>
+        </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="section4" style="display: none;">
+        <div class="form">
+            <dialog open>
+                <header id="header">Create a question</header>
+                <div class="input-question">
+                    <input type="text" id="title" placeholder="Question...">
+                    <input type="text" id="option1" placeholder="Answer1">
+                    <input type="text" id="option2" placeholder="Answer2">
+                    <input type="text" id="option3" placeholder="Answer3">
+                    <input type="text" id="option4" placeholder="Answer4">
+                </div>
+                <div class="dom-answer">
+                    <select class="answer">
+                        <option value="option1">Answer1</option>
+                        <option value="option2">Answer2</option>
+                        <option value="option3">Answer3</option>
+                        <option value="option4">Answer4</option>
                     </select>
-                </label>
-                <label for="answer2" class="d-flex">
-                    <input type="text" placeholder="Add answer" id="answer2" class="input-group p-2"><br>
-                    <select name="selectAnswer2" id=""class="selection2" style="height: 7.5vh;">
-                        <option value=" true">True</option>
-                        <option value=" false">False</option>
-                    </select>
-                </label>
-                <label for="answer3" class="d-flex">
-                    <input type="text" placeholder="Add answer" id="answer3" class="input-group p-2"><br>
-                    <select name="selectAnswer3" id=""class="selection3" style="height: 7.5vh;">
-                        <option value=" true">True</option>
-                        <option value=" false">False</option>
-                    </select>
-                </label>
-                <label for="answer4" class="d-flex">
-                <input type="text" placeholder="Add answer" id="answer4" class="input-group p-2">
-                    <select name="selectAnswer4" id=""class="selection4" style="height: 7.5vh;">
-                        <option value=" true">True</option>
-                        <option value=" false">False</option>
-                    </select>
-                </label>
+                </div>
+                <div class="btn-action">
+                    <button id="cancel">Cancel</button>
+                    <button id="create-quiz">Create</button>
+                </div>
+            </dialog>
+        </div>
+    </section>
+
+    <!-- play quiz  Section 5 -->
+    <section id="section5" style="display: none;">
+        <div class="content-quiz">
+            <div class="title-question">
+                <h4 id="title-question">My question</h4>
             </div>
+            <div class="answer-question">
+                <button id="answer1" onclick="checkAnswer('option1')">Answer1</button> <br>
+                <button id="answer2" onclick="checkAnswer('option2')">Answer2</button> <br>
+                <button id="answer3" onclick="checkAnswer('option3')">Answer3</button> <br>
+                <button id="answer4" onclick="checkAnswer('option4')">Answer4</button>
+            </div>
+        </div>
+    </section>
 
+    <!-- Show score Section 6 -->
+    <section id="section6" style="display: none;">
+        <div class="win">
+            <img src="images/win.gif" alt="">
+        </div>
+        <h1 id="score">My scores</h1>
 
+        <div class="btn-result">
+            <button id="play-again">Play Again</button>
+            <button id="show-answer-result">Correct Answer</button>
+        </div>
+    </section>
 
-        </form>
-    </div>
-    <!-- 4th Scenario -->
+    <!-- Show correct answers Section 7 -->
+    <section id="section7" style="display: none;">
+        <div class="action-btn">
+            <button id="back-score">< Back</button>
+            <button id="go-manu">Go Manu</button>
+        </div>
+        <div id="all-correct">
 
+        </div>
+    </section>
 
 </body>
+<script src="js/main.js"></script>
 
 </html>

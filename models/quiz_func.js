@@ -1,4 +1,3 @@
-
 // file system moudle (fs)
 const fs = require("fs");
 
@@ -6,24 +5,24 @@ const fs = require("fs");
 const database = "data/database.json";
 
 // load question and answer
-function load(){
+function load() {
     let questions = fs.readFileSync(database);
     return JSON.parse(questions);
 }
 
 // save question and answer to database file
-function save(question){
-    return fs.writeFileSync(database,JSON.stringify(question));
+function save(question) {
+    return fs.writeFileSync(database, JSON.stringify(question));
 }
 
 // get all questions 
-function getAll(){
+function getAll() {
     let questions = load();
     return questions;
 }
 
 // create new question 
-function createNew(question){
+function createNew(question) {
     // load questions 
     let questions = load();
 
@@ -35,7 +34,7 @@ function createNew(question){
 }
 
 // update question 
-function update(id,editQuestion){
+function update(id, editQuestion) {
     let questions = load();
     let question = questions[id];
     question.question = editQuestion.question;
@@ -46,18 +45,16 @@ function update(id,editQuestion){
 }
 
 // delete question
-function Delete(id){
+function Delete(id) {
     let questions = load();
-    for(let question of questions){
-        if(question.questionID === parseInt(id)){
-            questions.splice(id,1);
-            save(questions);
-        }
-    }
+    // remove question
+    questions.splice(parseInt(id), 1);
+    // save question again
+    save(questions);
 }
 
 // edit question 
-function edit(id){
+function edit(id) {
     let questions = load();
     let question = questions[id];
     return question;
@@ -69,4 +66,3 @@ module.exports.createNew = createNew;
 module.exports.Delete = Delete;
 module.exports.update = update;
 module.exports.edit = edit;
-
