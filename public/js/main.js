@@ -306,6 +306,18 @@
     }
 
 
+    
+    // function delete question
+    function deleteQestion(event){
+        // index question
+        let index = event.target.parentElement.parentElement.dataset.index;
+        
+        // alert ask user
+        if(confirm("Are your sure delete this question?")){
+            axios.delete(url + "/" + index).then(display);
+        }
+    }
+
 
 
 
