@@ -553,3 +553,6 @@
 
     // display question 
     display();
+
+    // display corection answer 
+    displayCorrectAnswer();
