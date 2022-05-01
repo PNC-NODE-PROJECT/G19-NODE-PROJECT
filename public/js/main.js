@@ -284,6 +284,29 @@
     }
 
 
+    // function edit question 
+    function editQuestion(event){
+        // index question
+        storeEditQuestion = event.target.parentElement.parentElement.dataset.index;
+
+        axios.get(url + "/" + storeEditQuestion).then(res =>{
+            let question = res.data;
+
+            // set to value to input
+            document.getElementById("title").value = question.question;
+            document.getElementById("option1").value = question.answers[0].option1;
+            document.getElementById("option2").value = question.answers[1].option2;
+            document.getElementById("option3").value = question.answers[2].option3;
+            document.getElementById("option4").value = question.answers[3].option4;
+
+            header.textContent = "Edit Question";
+            createQuiz.textContent = "Update";
+            show(section4);
+        })
+    }
+
+
+
 
 
 
