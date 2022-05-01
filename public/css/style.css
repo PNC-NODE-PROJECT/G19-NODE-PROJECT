@@ -387,7 +387,8 @@ h2 {
     background: rgb(233, 198, 1);
 }
 
-#back-go {
+#back-go,
+#play-menu {
     padding: 20px;
     width: 10vw;
     cursor: pointer;

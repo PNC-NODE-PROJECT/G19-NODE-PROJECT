@@ -73,6 +73,7 @@
     // function play quiz
     function play() {
         hide(section2);
+        hide(section3);
         show(section5);
     }
 
@@ -285,11 +286,11 @@
 
 
     // function edit question 
-    function editQuestion(event){
+    function editQuestion(event) {
         // index question
         storeEditQuestion = event.target.parentElement.parentElement.dataset.index;
 
-        axios.get(url + "/" + storeEditQuestion).then(res =>{
+        axios.get(url + "/" + storeEditQuestion).then(res => {
             let question = res.data;
 
             // set to value to input
@@ -306,14 +307,14 @@
     }
 
 
-    
+
     // function delete question
-    function deleteQestion(event){
+    function deleteQestion(event) {
         // index question
         let index = event.target.parentElement.parentElement.dataset.index;
-        
+
         // alert ask user
-        if(confirm("Are your sure delete this question?")){
+        if (confirm("Are your sure delete this question?")) {
             axios.delete(url + "/" + index).then(display);
         }
     }
@@ -378,56 +379,53 @@
     }
 
     // function display correct answers
-    function displayCorrectAnswer(){
+    function displayCorrectAnswer() {
         // get questions from backend
-        axios.get(url).then(res =>{
-            let questions = res.data;
+        axios.get(url).then(res => {
+                let questions = res.data;
 
-            // Remove the card and create a new one
-            let listCorrect = document.getElementById("all-correct");
-            listCorrect.remove();
-            listCorrect = document.createElement("div");
-            listCorrect.id = "all-correct";
-            section7.appendChild(listCorrect);
+                // Remove the card and create a new one
+                let listCorrect = document.getElementById("all-correct");
+                listCorrect.remove();
+                listCorrect = document.createElement("div");
+                listCorrect.id = "all-correct";
+                section7.appendChild(listCorrect);
 
-            
-            // For all questions,  create a new div, and append it the list correct answer
-            for (let index = 0; index < questions.length ; index++ ){
-                let question = questions[index];
 
-                let card = document.createElement("div");
-                card.className = "card-correct";
-                
+                // For all questions,  create a new div, and append it the list correct answer
+                for (let index = 0; index < questions.length; index++) {
+                    let question = questions[index];
 
-                // title question
-                let title = document.createElement("h3");
-                title.textContent = question.question;
-                // // add title to card
-                card.appendChild(title)
-                
+                    let card = document.createElement("div");
+                    card.className = "card-correct";
 
-                let correctAnswer = document.createElement("h2");
-                if (question.answers[0].isCorrect === true){
-                    correctAnswer.textContent = "Correct : " + question.answers[0].option1;
+
+                    // title question
+                    let title = document.createElement("h3");
+                    title.textContent = question.question;
+                    // // add title to card
+                    card.appendChild(title)
+
+
+                    let correctAnswer = document.createElement("h2");
+                    if (question.answers[0].isCorrect === true) {
+                        correctAnswer.textContent = "Correct : " + question.answers[0].option1;
+                    } else if (question.answers[1].isCorrect === true) {
+                        correctAnswer.textContent = "Correct : " + question.answers[1].option2;
+                    } else if (question.answers[2].isCorrect === true) {
+                        correctAnswer.textContent = "Correct : " + question.answers[2].option3;
+                    } else if (question.answers[3].isCorrect === true) {
+                        correctAnswer.textContent = "Correct : " + question.answers[3].option4;
+                    }
+
+                    card.appendChild(correctAnswer);
+                    listCorrect.appendChild(card);
                 }
-                else if(question.answers[1].isCorrect === true){
-                    correctAnswer.textContent = "Correct : " + question.answers[1].option2;
-                }
-                else if(question.answers[2].isCorrect === true){
-                    correctAnswer.textContent = "Correct : " + question.answers[2].option3;
-                }
-                else if(question.answers[3].isCorrect === true){
-                    correctAnswer.textContent = "Correct : " + question.answers[3].option4;
-                }
 
-                card.appendChild(correctAnswer);
-                listCorrect.appendChild(card);
-            }
-        
-        })
-        .catch(error =>{
-            console.log("error something!!");
-        })
+            })
+            .catch(error => {
+                console.log("error something!!");
+            })
     }
 
 
@@ -467,6 +465,7 @@
     const showResult = document.getElementById("show-answer-result");
     const backScore = document.getElementById("back-score");
     const goManu = document.getElementById("go-manu");
+    const playBtn = document.getElementById("play-menu");
 
 
     // Start play quiz
@@ -482,6 +481,10 @@
 
     })
 
+    function playFromCreate() {
+        play();
+        renderQuestion();
+    }
     // Check answer 
     function checkAnswer(choice) {
         axios.get(url).then(res => {
@@ -548,6 +551,7 @@
     showResult.addEventListener("click", showSectionResult);
     backScore.addEventListener("click", backToScore);
     goManu.addEventListener("click", again);
+    playBtn.addEventListener('click', playFromCreate);
 
 
 
