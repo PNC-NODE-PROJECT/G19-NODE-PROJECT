@@ -377,7 +377,58 @@
             })
     }
 
+    // function display correct answers
+    function displayCorrectAnswer(){
+        // get questions from backend
+        axios.get(url).then(res =>{
+            let questions = res.data;
 
+            // Remove the card and create a new one
+            let listCorrect = document.getElementById("all-correct");
+            listCorrect.remove();
+            listCorrect = document.createElement("div");
+            listCorrect.id = "all-correct";
+            section7.appendChild(listCorrect);
+
+            
+            // For all questions,  create a new div, and append it the list correct answer
+            for (let index = 0; index < questions.length ; index++ ){
+                let question = questions[index];
+
+                let card = document.createElement("div");
+                card.className = "card-correct";
+                
+
+                // title question
+                let title = document.createElement("h3");
+                title.textContent = question.question;
+                // // add title to card
+                card.appendChild(title)
+                
+
+                let correctAnswer = document.createElement("h2");
+                if (question.answers[0].isCorrect === true){
+                    correctAnswer.textContent = "Correct : " + question.answers[0].option1;
+                }
+                else if(question.answers[1].isCorrect === true){
+                    correctAnswer.textContent = "Correct : " + question.answers[1].option2;
+                }
+                else if(question.answers[2].isCorrect === true){
+                    correctAnswer.textContent = "Correct : " + question.answers[2].option3;
+                }
+                else if(question.answers[3].isCorrect === true){
+                    correctAnswer.textContent = "Correct : " + question.answers[3].option4;
+                }
+
+                card.appendChild(correctAnswer);
+                listCorrect.appendChild(card);
+            }
+        
+        })
+        .catch(error =>{
+            console.log("error something!!");
+        })
+    }
 
 
     // function render quiz 
