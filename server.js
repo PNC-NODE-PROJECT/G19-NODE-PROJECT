@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 // run server 
 app.listen(PORT,() =>{
-    console.log("http://localhost:" + PORT);
+    console.log("running " + PORT);
 })
 
 // connect to route back
