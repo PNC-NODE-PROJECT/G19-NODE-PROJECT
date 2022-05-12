@@ -24,8 +24,6 @@
     let score = 0
         // Store edit question
     let storeEditQuestion = null;
-    //  server url
-    const url = "http://localhost:80/quiz";
     // ================================================ Function Blocks =============================================
     //
     //
@@ -130,12 +128,12 @@
     //@ get data from user input,
     //@ send to back end to store in json file
     function save(question) {
-        axios.post(url + "/add", question).then(display);
+        axios.post("/quiz"+ "/add", question).then(display);
     }
 
     // function update 
     function update(id, editQuestion) {
-        axios.patch(url + "/" + id, editQuestion).then(display);
+        axios.patch("/quiz" + "/" + id, editQuestion).then(display);
     }
 
     // ----------------------------------------------------- function create question --------------------------------------------
@@ -314,7 +312,7 @@
         // index question
         storeEditQuestion = event.target.parentElement.parentElement.dataset.index;
 
-        axios.get(url + "/" + storeEditQuestion).then(res => {
+        axios.get("/" + storeEditQuestion).then(res => {
             let question = res.data;
 
             // set to value to input
@@ -339,7 +337,7 @@
 
         // alert ask user
         if (confirm("Are your sure delete this question?")) {
-            axios.delete(url + "/" + index).then(display);
+            axios.delete("/quiz" + index).then(display);
         }
     }
 
@@ -350,7 +348,7 @@
     //@ display on DOM
     function display() {
         // get datas from server
-        axios.get(url).then(res => {
+        axios.get("/quiz").then(res => {
                 let questions = res.data;
                 // Remove the card and create a new one
                 let listQuestion = document.getElementById("all-question");
@@ -404,7 +402,7 @@
     //@ loop to get correct answer from server/json file
     function displayCorrectAnswer() {
         // get questions from backend
-        axios.get(url).then(res => {
+        axios.get("/quiz").then(res => {
                 let questions = res.data;
 
                 // Remove the card and create a new one
@@ -454,7 +452,7 @@
     // ---------------------------------------------------- function render quiz ----------------------------------------------------
     //@ get datas from backend and replace it in the needed tags.
     function renderQuestion() {
-        axios.get(url).then(res => {
+        axios.get("/quiz").then(res => {
             let storeQuestion = res.data;
             if (storeQuestion !== null) {
                 let questions = storeQuestion;
@@ -508,7 +506,7 @@
     }
     //---------------------------------------------------- Check anser & sum scores -------------------------------------
     function checkAnswer(choice) {
-        axios.get(url).then(res => {
+        axios.get("/quiz").then(res => {
             let questions = res.data;
 
             let question = questions[currenIndexQuestion];
@@ -549,7 +547,7 @@
         hide(section5)
         show(section6);
 
-        axios.get(url).then(res => {
+        axios.get("/quiz").then(res => {
             let questions = res.data;
 
             // calculate the final scores of player in percent
