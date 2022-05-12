@@ -312,7 +312,7 @@
         // index question
         storeEditQuestion = event.target.parentElement.parentElement.dataset.index;
 
-        axios.get("/" + storeEditQuestion).then(res => {
+        axios.get("/quiz/" + storeEditQuestion).then(res => {
             let question = res.data;
 
             // set to value to input
@@ -337,7 +337,7 @@
 
         // alert ask user
         if (confirm("Are your sure delete this question?")) {
-            axios.delete("/quiz" + index).then(display);
+            axios.delete("/quiz/" + index).then(display);
         }
     }
 
