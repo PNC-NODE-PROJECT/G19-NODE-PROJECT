@@ -340,7 +340,7 @@
             axios.delete("/quiz/" + index).then(display);
         }
     }
-
+// kkkk
     // ---------------------------------------------------- diplay questions ----------------------------------------------------
     //@ get datas from server
     //@ create tags
