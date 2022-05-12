@@ -48,12 +48,10 @@ function update(id,editQuestion){
 // delete question
 function Delete(id){
     let questions = load();
-    for(let question of questions){
-        if(question.questionID === parseInt(id)){
-            questions.splice(id,1);
-            save(questions);
-        }
-    }
+    // remove question
+    questions.splice(parseInt(id),1);
+    // save question again
+    save(questions);
 }
 
 // edit question 
