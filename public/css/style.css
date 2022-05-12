@@ -1,409 +1,435 @@
-/* Google font Montserrat */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@300&family=Poppins:wght@300&display=swap');
-
-/* body style */
-body,h1{
-    margin: 0;
-    padding: 0;
-}
-body{
-    font-family: 'Montserrat', sans-serif;
-}
-
-/* main color use in app */
-:root {
-    --main-color: purple;
-    --font-color:#fff;
-    --border-reduis:5px;
-    --color-hover:rgb(168, 2, 168);
-}
-
-/* display flex */
-.logo,.login,.manu,.action-btn,.btn-action,.card-action,.answer-question,.win,.btn-result{
-    display: flex;
-}
-
-/* Center */
-.logo,.login,.manu,.answer-question,.win,.btn-result{
-    justify-content: center;
-    align-items: center;
-}
-
-.action-btn{
-    justify-content: space-between;
-    margin: 0 30px;
-}
-.btn-action{
-    justify-content: flex-end;
-    margin: 10px 40px;
-}
-
-.card-action{
-    justify-content: flex-end;
-}
-
-.fa-pencil-square-o,.fa-trash{
-    margin: 4px 15px;
-    cursor: pointer;
-}
-
-.fa-pencil-square-o {
-    color: blue;
-}
-
-.fa-trash{
-    color: red;
-}
-
-#section6 h1{
-    margin-top: 10px;
-}
-
-.btn-result button{
-    margin: 15px 20px;
-    border-radius: 5px;
-    border: none;
-    width: 30vw;
-    cursor: pointer;
-    padding: 20px;
-    color: #fff;
-    font-size: larger;
-}
-
-#play-again{
-    background: purple;
-}
-#play-again:hover{
-    background: var(--color-hover);
-}
-
-#show-answer-result{
-    background: rgb(212, 180, 0);
-}
-#show-answer-result:hover{
-    background: rgb(251, 216, 20);
-}
-
-#add{
-    padding: 17px;
-    background: var(--main-color);
-    border: none;
-    margin-top: 5px;
-    color: var(--font-color);
-    width: 10vw;
-    font-size: larger;
-    cursor: pointer;
-    border-radius: var(--border-reduis);
-}
-
-#add:hover{
-    background: var(--color-hover);
-}
-
-#back-manu,#back-score,#go-manu{
-    margin-top: 5px;
-    border-radius: 5px;
-    border: none;
-    width: 10vw;
-    cursor: pointer;
-    background: var(--main-color);
-    color: var(--font-color);
-}
-
-#back-score,#go-manu{
-    padding: 17px;
-}
-
-#back-manu:hover,#go-manu:hover,#back-score:hover{
-    background: var(--color-hover);
-}
-
-#cancel{
-    color: red;
-    border: none;
-    padding: 10px;
-    margin: 0 10px;
-    cursor: pointer;
-    border: 1px solid gray;
-    border-radius: var(--border-reduis);
-}
-
-#cancel:hover{
-   border: 1px solid red;
-}
-
-#score{
-    font-size: 3rem;
-}
-
-#create-quiz{
-    color: purple;
-    border: none;
-    padding: 0 10px;
-    border: 1px solid gray;
-    cursor: pointer;
-    border-radius: var(--border-reduis);
-}
-#create-quiz:hover{
-    border: 1px solid purple;
-}
-
-.content-quiz{
-    height: 88vh;
-}
-
-h4{
-    text-align: center;
-    margin-top: 20px;
-}
-
-.title-question{
-    padding: 35px;
-    background: rgb(234, 233, 233);
-    margin: 0 50px;
-    border-radius: 0 0 20px 20px;
-
-}
-
-.answer-question {
-    margin: 0 40px ;
-    margin-top: 40px;
-    flex-wrap: wrap;
-   
-}
-
-.answer-question button{
-    width: 40vw;
-    padding: 40px;
-    margin: 20px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-#answer1{
-    background-color: var(--main-color);
-    color: #fff;
-    font-size: larger;
-}
-
-#answer1:hover{
-    background: var(--color-hover);
-}
-
-#answer2{
-    background: var(--main-color);
-    color: #fff;
-    font-size: larger;
-}
-#answer2:hover{
-    background:var(--color-hover) ;
-}
-
-#answer3{
-    background: var(--main-color);
-    color: #fff;
-    font-size: larger;
-}
-#answer3:hover{
-    background: var(--color-hover);
-}
-
-#answer4{
-    background: var(--main-color);
-    color: #fff;
-    font-size: larger;
-}
-#answer4:hover{
-    background: var(--color-hover);
-}
-dialog {
-    position: fixed;
-    top: 10vh;
-    left: 20%;
-    width: 60%;
-    z-index: 100;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
-
-header{
-    background: var(--main-color);
-    padding: 15px;
-    color: #fff;
-    font-size: large;
-}
-
-
-.input-question input{
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid gray;
-}
-
-.input-question input:focus{
-    outline: 1px solid purple;
-}
-
-.input-question{
-    padding: 10px 30px;
-}
-
-.input-question #title{
-    padding: 20px;
-}
-
-
-.form{
-    position: fixed;
-    top:0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    z-index: 10;
-}
-
-/* text center */
-h1{
-    text-align: center;
-    color: gold;
-}
-
-/* style logo */
-.logo{
-    font-size: 2.5rem;
-    font-style: inherit;
-    color: var(--main-color);
-}
-.logo span{
-    color: red;
-}
-
-nav{
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-
-
-.login{
-    height: 86vh;
-}
-
-.manu{
-    height: 81vh;
-}
-
-#section3,#section5,#section6,#section7{
-    height: 91vh;
-}
-
-h4{
-    margin: 0;
-    padding: 0;
-}
-
-h2{
-    color: green;
-}
-
-#all-question,#all-correct{
-    height: 78.5vh;
-    margin: 3px 30px;
-    overflow: scroll;
-    overflow-x:hidden ;
-}
-
-.card,.card-correct{
-    background: #fff;
-    margin: 5px 40px;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-
-
-/* Login button  */
-#login{
-    padding: 30px;
-    width: 40%;
-    cursor: pointer;
-    background: var(--main-color);
-    border: none;
-    border-radius: var(--border-reduis);
-    color: var(--font-color);
-    font-size: 3rem;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-
-    /* anermation set */
-    animation-name: example;
-    animation-duration: 10s;
-}
-
-#play,#create{
-    padding: 25px;
-    width: 60vw;
-    cursor: pointer;
-    border: none;
-    border-radius: var(--border-reduis);
-    color: var(--font-color);
-    margin: 10px 0;
-    font-size: 3rem;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-}
-
-#play{
-    background-color: var(--main-color);
-}
-#create{
-    background: rgb(181, 154, 0);
-}
-#create:hover{
-    background: rgb(233, 198, 1);
-}
-
-#back-go{
-    padding: 20px;
-    width: 10vw;
-    cursor: pointer;
-    border: none;
-    margin-left: 30px;
-    background: var(--main-color);
-    color: var(--font-color);
-    border-radius: var(--border-reduis);
-    margin-top: 5px;
-}
-#back-go:hover{
-    background: var(--color-hover);
-}
-
-.dom-answer{
-    margin-left:30px;
-}
-.answer{
-    padding: 10px;
-}
-.answer:focus{
-    outline: 1px solid purple;
-}
-
-/* keyframe example */
-@keyframes example {
-    from {background-color: red;}
-    to {background-color: yellow;}
-}
-
-#login:hover,#play:hover{
-    background: var(--color-hover);
-}
-
-section{
-    background-image: url("../images/bg.jpg");
-}
-
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@300&family=Poppins:wght@300&display=swap');
+        h1 {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+         :root {
+            --main-color: purple;
+            --font-color: #fff;
+            --border-reduis: 5px;
+            --color-hover: rgb(168, 2, 168);
+        }
+        
+        .logo,
+        .getInQuiz,
+        .menu,
+        .action-btn,
+        .btn-action,
+        .card-action,
+        .answer-question,
+        .win,
+        .btn-result {
+            display: flex;
+        }
+        
+        .logo,
+        .getInQuiz,
+        .menu,
+        .answer-question,
+        .win,
+        .btn-result {
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .action-btn {
+            justify-content: space-between;
+            margin: 0 30px;
+        }
+        
+        .btn-action {
+            justify-content: flex-end;
+            margin: 10px 40px;
+        }
+        
+        .card-action {
+            justify-content: flex-end;
+        }
+        
+        .fa-pencil-square-o,
+        .fa-trash {
+            margin: 4px 15px;
+            cursor: pointer;
+        }
+        
+        .fa-pencil-square-o {
+            color: blue;
+        }
+        
+        .fa-trash {
+            color: red;
+        }
+        
+        #section6 h1 {
+            margin-top: 10px;
+        }
+        
+        .btn-result button {
+            margin: 15px 20px;
+            border-radius: 5px;
+            border: none;
+            width: 30vw;
+            cursor: pointer;
+            padding: 20px;
+            color: #fff;
+            font-size: larger;
+        }
+        
+        #play-again {
+            background: purple;
+        }
+        
+        #play-again:hover {
+            background: var(--color-hover);
+        }
+        
+        #show-answer-result {
+            background: rgb(212, 180, 0);
+        }
+        
+        #show-answer-result:hover {
+            background: rgb(251, 216, 20);
+        }
+        
+        #add {
+            padding: 17px;
+            background: var(--main-color);
+            border: none;
+            margin-top: 5px;
+            color: var(--font-color);
+            width: 10vw;
+            font-size: larger;
+            cursor: pointer;
+            border-radius: var(--border-reduis);
+        }
+        
+        #add:hover {
+            background: var(--color-hover);
+        }
+        
+        #back-menu,
+        #back-inscore-part,
+        #go-menu {
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+            width: 10vw;
+            cursor: pointer;
+            background: var(--main-color);
+            color: var(--font-color);
+        }
+        
+        #back-score,
+        #go-menu {
+            padding: 17px;
+        }
+        
+        #back-manu:hover,
+        #go-menu:hover,
+        #back-inscore-part:hover {
+            background: var(--color-hover);
+        }
+        
+        #cancel {
+            color: red;
+            border: none;
+            padding: 10px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: 1px solid gray;
+            border-radius: var(--border-reduis);
+        }
+        
+        #cancel:hover {
+            border: 1px solid red;
+        }
+        
+        #score {
+            font-size: 3rem;
+        }
+        
+        #create-quiz {
+            color: purple;
+            border: none;
+            padding: 0 10px;
+            border: 1px solid gray;
+            cursor: pointer;
+            border-radius: var(--border-reduis);
+        }
+        
+        #create-quiz:hover {
+            border: 1px solid purple;
+        }
+        
+        .content-quiz {
+            height: 88vh;
+        }
+        
+        h4 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .title-question {
+            padding: 35px;
+            background: rgb(234, 233, 233);
+            margin: 0 50px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .answer-question {
+            margin: 0 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .answer-question button {
+            width: 40vw;
+            padding: 40px;
+            margin: 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        #answer1 {
+            background-color: var(--main-color);
+            color: #fff;
+            font-size: larger;
+        }
+        
+        #answer1:hover {
+            background: var(--color-hover);
+        }
+        
+        #answer2 {
+            background: var(--main-color);
+            color: #fff;
+            font-size: larger;
+        }
+        
+        #answer2:hover {
+            background: var(--color-hover);
+        }
+        
+        #answer3 {
+            background: var(--main-color);
+            color: #fff;
+            font-size: larger;
+        }
+        
+        #answer3:hover {
+            background: var(--color-hover);
+        }
+        
+        #answer4 {
+            background: var(--main-color);
+            color: #fff;
+            font-size: larger;
+        }
+        
+        #answer4:hover {
+            background: var(--color-hover);
+        }
+        
+        dialog {
+            position: fixed;
+            top: 10vh;
+            left: 20%;
+            width: 60%;
+            z-index: 100;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        header {
+            background: var(--main-color);
+            padding: 15px;
+            color: #fff;
+            font-size: large;
+        }
+        
+        .input-question input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid gray;
+        }
+        
+        .input-question input:focus {
+            outline: 1px solid purple;
+        }
+        
+        .input-question {
+            padding: 10px 30px;
+        }
+        
+        .input-question #title {
+            padding: 20px;
+        }
+        
+        .form {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: 10;
+        }
+        
+        h1 {
+            text-align: center;
+            color: gold;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-style: inherit;
+            color: var(--main-color);
+        }
+        
+        .logo span {
+            color: red;
+        }
+        
+        nav {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        }
+        
+        .getInQuiz {
+            height: 86vh;
+        }
+        
+        .menu {
+            height: 81vh;
+        }
+        
+        #section3,
+        #section5,
+        #section6,
+        #section7 {
+            height: 91vh;
+        }
+        
+        h4 {
+            margin: 0;
+            padding: 0;
+        }
+        
+        h2 {
+            color: green;
+        }
+        
+        #all-question,
+        #all-correct {
+            height: 78.5vh;
+            margin: 3px 30px;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+        
+        .card,
+        .card-correct {
+            background: #fff;
+            margin: 5px 40px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        #getInQuiz {
+            padding: 30px;
+            width: 40%;
+            cursor: pointer;
+            background: var(--main-color);
+            border: none;
+            border-radius: var(--border-reduis);
+            color: var(--font-color);
+            font-size: 3rem;
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+            animation-name: example;
+            animation-duration: 10s;
+        }
+        
+        #play,
+        #create {
+            padding: 25px;
+            width: 60vw;
+            cursor: pointer;
+            border: none;
+            border-radius: var(--border-reduis);
+            color: var(--font-color);
+            margin: 10px 0;
+            font-size: 3rem;
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        }
+        
+        #play {
+            background-color: var(--main-color);
+        }
+        
+        #create {
+            background: rgb(181, 154, 0);
+        }
+        
+        #create:hover {
+            background: rgb(233, 198, 1);
+        }
+        
+        #back,
+        #play-menu {
+            padding: 20px;
+            width: 10vw;
+            cursor: pointer;
+            border: none;
+            margin-left: 30px;
+            background: var(--main-color);
+            color: var(--font-color);
+            border-radius: var(--border-reduis);
+            margin-top: 5px;
+        }
+        
+        #back-go:hover {
+            background: var(--color-hover);
+        }
+        
+        .dom-answer {
+            margin-left: 30px;
+        }
+        
+        .answer {
+            padding: 10px;
+        }
+        
+        .answer:focus {
+            outline: 1px solid purple;
+        }
+        
+        @keyframes example {
+            from {
+                background-color: red;
+            }
+            to {
+                background-color: yellow;
+            }
+        }
+        
+        #getInQuiz :hover,
+        #play:hover {
+            background: var(--color-hover);
+        }
+        
+        section {
+            background-image: url("../images/bg.jpg");
+        }
