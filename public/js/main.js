@@ -128,7 +128,7 @@
     //@ get data from user input,
     //@ send to back end to store in json file
     function save(question) {
-        axios.post("/quiz"+ "/add", question).then(display);
+        axios.post("/quiz" + "/add", question).then(display);
     }
 
     // function update 
@@ -340,7 +340,7 @@
             axios.delete("/quiz/" + index).then(display);
         }
     }
-// kkkk
+    // kkkk
     // ---------------------------------------------------- diplay questions ----------------------------------------------------
     //@ get datas from server
     //@ create tags
@@ -396,7 +396,7 @@
                 console.log("error something!!");
             })
     }
-
+    // ssssssssssss
     // ---------------------------------------------------- function display correct answers ------------------------------------
     //@ create a page to show correct answer
     //@ loop to get correct answer from server/json file
